@@ -31,7 +31,8 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
-	public void Move(){
+	public void Move(Tile otherTile){
+		transform.Translate (otherTile.GetTilePosition ().x, otherTile.GetTilePosition ().y, 0.75f);
 	}
 
 	public void Damage(int enemyAttack){

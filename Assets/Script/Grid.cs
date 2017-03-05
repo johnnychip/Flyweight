@@ -26,6 +26,7 @@ public class Grid : MonoBehaviour {
 			
 				GameObject tempCube = Instantiate (tilePrefab, new Vector3 (x, y, 0f), Quaternion.identity);
 				tiles [x, y] = tempCube.GetComponent<Tile> ();
+				tiles [x, y].SetTilePosition (x, y);
 			
 			}
 
