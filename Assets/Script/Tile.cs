@@ -5,6 +5,9 @@ using UnityEngine;
 public class Tile : MonoBehaviour {
 
 	private Vector2 TilePosition;
+	private Unit unitOn;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -20,9 +23,13 @@ public class Tile : MonoBehaviour {
 	{
 		return TilePosition;
 	}
-		
-	// Update is called once per frame
-	void Update () {
-		
+
+	public Unit UnitOn {
+		get {
+			return unitOn;
+		}
+		set {
+			unitOn = value;
+		}
 	}
 }

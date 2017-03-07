@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour {
 
+	public int x;
+	public int y;
+
 	[SerializeField]
 	private int health;
 	[SerializeField]
@@ -13,16 +16,10 @@ public class Unit : MonoBehaviour {
 	[SerializeField]
 	private Team myTeam;
 	[SerializeField]
-	private Vector2 gridPosition;
-
+	private UnitMind mind;
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+		transform.position = new Vector3 (x, y, -0.75f);
 	}
 
 	public void Attack(Unit otherUnit){
@@ -31,8 +28,12 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
-	public void Move(Tile otherTile){
-		transform.Translate (otherTile.GetTilePosition ().x, otherTile.GetTilePosition ().y, 0.75f);
+	public void Move(int tempX, int tempY){
+
+		transform.position = new Vector3 (tempX, tempY, -0.75f);
+		x = tempX;
+		y = tempY;
+
 	}
 
 	public void Damage(int enemyAttack){
@@ -40,6 +41,11 @@ public class Unit : MonoBehaviour {
 		if (health <= 0)
 			gameObject.SetActive (false);
 	}
+
+	public void StayThere(){
+		Debug.Log("Im still");
+	}
+		
 
 	public Team MyTeam {
 		get {
