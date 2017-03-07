@@ -16,8 +16,13 @@ public class UnitMind : MonoBehaviour {
 		} else {
 			move = -1;
 		}
-		if (myGrid.tiles [unit.x + move, unit.y].UnitOn == null) {
-			unit.Move ((unit.x + move), unit.y);
+
+		int moveX = unit.x + move;
+		if (myGrid.tiles [moveX, unit.y].UnitOn == null) {
+			myGrid.tiles [unit.x, unit.y].UnitOn = null;
+			myGrid.tiles [moveX , unit.y].UnitOn = unit;
+			unit.Move (moveX, unit.y);
+
 		} else {
 			unit.Attack (myGrid.tiles [(unit.x + move), unit.y].UnitOn);
 		}

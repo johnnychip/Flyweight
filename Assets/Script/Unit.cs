@@ -17,9 +17,12 @@ public class Unit : MonoBehaviour {
 	private Team myTeam;
 	[SerializeField]
 	private UnitMind mind;
+
+	private int movement;
 	// Use this for initialization
 	void Start () {
 		transform.position = new Vector3 (x, y, -0.75f);
+
 	}
 
 	public void Attack(Unit otherUnit){
@@ -37,13 +40,34 @@ public class Unit : MonoBehaviour {
 	}
 
 	public void Damage(int enemyAttack){
-		health -= defense - enemyAttack;
+		health += defense - enemyAttack;
 		if (health <= 0)
 			gameObject.SetActive (false);
 	}
 
 	public void StayThere(){
 		Debug.Log("Im still");
+	}
+
+	public void UpdateState (){
+	
+		mind.UpdateUnit (this);
+
+	}
+
+	private void AssignTeam(){
+		switch (myTeam) 
+		{
+		case Team.A:
+			movement = 1;
+			break;
+		case Team.B:
+			movement = -1;
+			break;
+		default:
+			Debug.Log("Team no assigned");
+			break;
+		}
 	}
 		
 

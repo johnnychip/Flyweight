@@ -37,13 +37,13 @@ public class Grid : MonoBehaviour {
 			}
 
 		}
-
+		InitUnits ();
 
 	}
 
 	void Start(){
 	
-		InitUnits ();
+
 	
 	}
 
@@ -51,7 +51,7 @@ public class Grid : MonoBehaviour {
 	{
 		
 		tiles [0, (mapSizeY-1)].UnitOn = player1;
-		player1.Move (0, mapSizeY);
+		player1.Move (0, mapSizeY-1);
 
 		tiles [(mapSizeX - 1), (mapSizeY - 1)].UnitOn = player2;
 		player2.Move ((mapSizeX - 1), (mapSizeY - 1));
